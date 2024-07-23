@@ -4,6 +4,5 @@ public class BasicUserInput
 {
     public static void main(String[] args)
     {
-
     }
 }
