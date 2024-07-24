@@ -1,18 +1,21 @@
 package com.niantic;
 
+// you must import the java.util.Scanner package
 import java.util.Scanner;
 
-public class Functions02
+public class FunctionsDemo
 {
     public static void main(String[] args)
     {
-        // to get UserInput user Scanner
+        // to get UserInput user a Scanner object
         Scanner userInput = new Scanner(System.in);
 
+        // variables for
         int rank;
         String teamName;
         int q1, q2, q3, q4;
 
+        // prompt the user for football team information
         System.out.print("Enter the team rank: ");
         rank = userInput.nextInt();
         userInput.nextLine();
@@ -37,18 +40,22 @@ public class Functions02
         userInput.nextLine();
 
 
-        // add your code here
-        System.out.println("Football");
+        // use function to display team information
+        System.out.println("Football Scores:");
+        // use hard coded values for the first 2 teams
         displayTeamScores(1, "Georgia", 12, 14, 6, 7);
         displayTeamScores(2, "Alabama", 14, 17, 10, 14);
+        // use the variables from the user input to display the 3rd team
         displayTeamScores(rank,teamName,q1,q2,q3,q4);
 
 
 
-
-
+        // calculateFinalScore() can be called by
+        // any other function.
+        // Here we are using the calculateFinalScore
+        // to calculate the total score of 4 card games
         System.out.println();
-        System.out.println("Cards");
+        System.out.println("Cards Games Total: ");
         int game1 = 3;
         int game2 = 4;
         int game3 = 5;
