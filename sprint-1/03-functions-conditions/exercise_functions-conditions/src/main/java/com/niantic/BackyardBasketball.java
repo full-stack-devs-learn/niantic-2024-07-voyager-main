@@ -24,7 +24,8 @@ public class BackyardBasketball
      */
     public int calculateWinningPercentage(int gamesWon, int gamesLost)
     {
-        return 0;
+        int totalGames = gamesWon + gamesLost;
+        return gamesWon * 100 / totalGames;
     }
 
 
@@ -43,7 +44,9 @@ public class BackyardBasketball
      */
     public int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree)
     {
-        return 0;
+        double percentage = shotPercentage / 100.0;
+        double madeShots = shotsTaken * percentage ;
+        return isThree ? (int)madeShots * 3 : (int)madeShots * 2;
     }
 
 
