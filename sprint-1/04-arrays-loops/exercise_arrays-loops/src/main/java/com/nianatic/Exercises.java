@@ -11,7 +11,8 @@ public class Exercises
      */
     public String[] daysOfTheWeek()
     {
-        return null;
+        String[] daysOfTheWeek = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+        return daysOfTheWeek;
     }
 
     /*
