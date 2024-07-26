@@ -76,7 +76,7 @@ public class Exercises
      */
     public String firstDayOfWeek(String[] daysOfTheWeek)
     {
-        return null;
+        return daysOfTheWeek[0];
     }
 
     /*
@@ -95,9 +95,11 @@ public class Exercises
      * Input                                                                              Output
      * lastDayOfWeek([Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]) => Saturday
      * lastDayOfWeek([Monday, Tuesday, Wednesday, Thursday, Friday])                   => Friday
+     * lastDayOfWeek([Monday, Tuesday, Wednesday, Thursday])                           => Thursday
      */
     public String lastDayOfWeek(String[] daysOfTheWeek)
     {
+        String lastDayOfWeek = daysOfTheWeek[daysOfTheWeek.length-1];
         return null;
     }
 
