@@ -27,7 +27,7 @@ public class Main
                 case 4:
                     findLowestScore();
                     break;
-                case 5:
+                case 0:
                     System.out.println("Thanks for playing!");
                     System.out.println("Good bye!");
                     System.exit(0);

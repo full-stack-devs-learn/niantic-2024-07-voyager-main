@@ -1,5 +1,7 @@
 package com.nianatic;
 
+import static java.lang.StringTemplate.STR;
+
 public class Exercises
 {
     /*
@@ -100,6 +102,8 @@ public class Exercises
     public String lastDayOfWeek(String[] daysOfTheWeek)
     {
         String lastDayOfWeek = daysOfTheWeek[daysOfTheWeek.length-1];
+        String someText = STR."The last day of the week is \{lastDayOfWeek}";
+        System.out.println(someText);
         return null;
     }
 
