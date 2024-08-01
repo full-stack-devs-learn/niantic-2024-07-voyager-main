@@ -45,3 +45,132 @@ OrderDetails: (Create 5 line items)
     Discount: 0
 */
 
+SET @customer_id = 'PRDSP'
+	, @company_name = 'Predator Sports'
+    , @contact_name = 'Gregor Dzierzon'
+    , @address = '123 Main St'
+    , @city = ' Tooele'
+    , @state = 'Utah'
+    , @zip = 84074
+    , @country = 'USA'
+    ;
+
+SET @product_name_1 = 'Gustaf''s Knckebrd'
+	, @product_name_2 = 'Teatime Chocolate Biscuits'
+	, @product_name_3 = 'Gumbr Gummibrchen'
+	, @product_name_4 = 'NuNuCa Nu-Nougat-Creme'
+	, @product_name_5 = 'Camembert Pierrot'
+;
+
+START TRANSACTION;
+
+-- 1. INSERT new customer INTO customers table
+INSERT INTO customers 
+(
+	customer_id
+	, company_name
+    , contact_name
+    , address
+    , city
+    , region
+    , postal_code
+    , country
+)
+VALUES
+(
+	@customer_id
+	, @company_name
+    , @contact_name
+    , @address
+    , @city
+    , @state
+    , @zip
+    , @country
+);
+
+SELECT *
+FROM customers
+WHERE customer_id = @customer_id;
+
+
+-- 2. INSERT new order INTO orders table
+INSERT INTO orders
+(
+	customer_id
+    , order_date
+    , ship_name
+    , ship_address
+    , ship_city
+    , ship_region
+    , ship_postal_code
+    , ship_country
+)
+VALUES
+(
+	@customer_id
+    , CURRENT_DATE
+    , @contact_name
+    , @address
+    , @city
+    , @state
+    , @zip
+    , @country
+);
+
+SET @order_id = LAST_INSERT_ID();
+
+-- 3. INSERT 1 row for each product INTO the order_details table
+
+-- product 1
+SELECT @product_id_1 := product_id
+	, @product_price_1 := unit_price
+FROM products
+WHERE product_name = @product_name_1;
+
+INSERT INTO order_details( order_id, product_id, unit_price)
+VALUES (@order_id, @product_id_1, @product_price_1);
+
+-- product 2
+SELECT @product_id_2 := product_id
+	, @product_price_2 := unit_price
+FROM products
+WHERE product_name = @product_name_2;
+
+INSERT INTO order_details( order_id, product_id, unit_price)
+VALUES (@order_id, @product_id_2, @product_price_2);
+
+-- product 3
+SELECT @product_id_3 := product_id
+	, @product_price_3 := unit_price
+FROM products
+WHERE product_name = @product_name_3;
+
+INSERT INTO order_details( order_id, product_id, unit_price)
+VALUES (@order_id, @product_id_3, @product_price_3);
+
+-- product 4
+SELECT @product_id_4 := product_id
+	, @product_price_4 := unit_price
+FROM products
+WHERE product_name = @product_name_4;
+
+INSERT INTO order_details( order_id, product_id, unit_price)
+VALUES (@order_id, @product_id_4, @product_price_4);
+
+-- product 5
+SELECT @product_id_5 := product_id
+	, @product_price_5 := unit_price
+FROM products
+WHERE product_name = @product_name_5;
+
+INSERT INTO order_details( order_id, product_id, unit_price)
+VALUES (@order_id, @product_id_5, @product_price_5);
+
+COMMIT;
+
+
+SELECT *
+FROM order_details
+WHERE order_id = @order_id;
+
+
