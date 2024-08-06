@@ -206,7 +206,7 @@ Create methods based on the following signatures:
 ```
     void openDoor()
     void closeDoor()
-    void addItem(int capacity)
+    boolean addItem(int capacity)
     void removeItem(int capacity)
 ```
 
