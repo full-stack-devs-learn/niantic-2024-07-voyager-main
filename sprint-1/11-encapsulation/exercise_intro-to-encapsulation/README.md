@@ -190,7 +190,7 @@ items that are larger than the available capacity. Also, items can only be added
 |---------------------|-----------|-----|-----|---------------------------------------------------|
 | currentTemperature  | int       | X   |     | Gets the current temperature of the refrigerator. |
 | maxCapacity         | int       | X   |     | Gets the maximum possible capacity.               |
-| available           | int       | X   |     | Gets the available capacity of the refrigerator.  |
+| availableCapacity   | int       | X   |     | Gets the available capacity of the refrigerator.  |
 | isDoorOpen          | boolean   | X   |     | Indicates whether the door is open or closed      |
 
 #### Constructor
@@ -223,14 +223,14 @@ Create methods based on the following signatures:
 
 #### Properties
 
-| variables           | Data Type | Get | Set | Description                                           |
-|---------------------|-----------| --- |-----|-------------------------------------------------------|
-| numberOfRooms       | int       | X   |     | Gets the total number of regular rooms in the hotel.  |
-| numberOfSuites      | int       | X   |     | Gets the total number of suites in the hotel.         |
-| bookedRooms         | int       | X   |     | Gets the number of booked regular rooms.              |
-| bookedSuites        | int       | X   |     | Gets the number of booked suites.                     |
-| availableRooms      | int       | X   |     | Gets the number of available regular rooms. (derived) |
-| BookedCoachSeats    | int       | X   |     | Gets the number of available suites. (derived)        |
+| variables       | Data Type | Get | Set | Description                                           |
+|-----------------|-----------| --- |-----|-------------------------------------------------------|
+| numberOfRooms   | int       | X   |     | Gets the total number of regular rooms in the hotel.  |
+| numberOfSuites  | int       | X   |     | Gets the total number of suites in the hotel.         |
+| bookedRooms     | int       | X   |     | Gets the number of booked regular rooms.              |
+| bookedSuites    | int       | X   |     | Gets the number of booked suites.                     |
+| availableRooms  | int       | X   |     | Gets the number of available regular rooms. (derived) |
+| availableSuites | int       | X   |     | Gets the number of available suites. (derived)        |
 
 **Notes**
 

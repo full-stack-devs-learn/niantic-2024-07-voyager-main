@@ -4,6 +4,7 @@ import com.niantic.ReflectionBase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static java.lang.StringTemplate.STR;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ALL")
