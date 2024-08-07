@@ -33,9 +33,15 @@ public class ArrayListIntro
        sum( [1, 2, 3, 4] )            ->  10
        sum( [21, 98, 78, 5, 6, 8] )   ->  216
      */
-    public int sum(ArrayList<Integer> numbers)
+    public static int sum(ArrayList<Integer> numbers)
     {
-        return 0;
+        int sum = 0;
+
+        for(int number: numbers)
+        {
+            sum += number;
+        }
+        return sum;
     }
 
     /*

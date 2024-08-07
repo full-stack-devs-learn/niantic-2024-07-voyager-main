@@ -3,6 +3,7 @@ package com.niantic.exercises;
 import com.niantic.models.OrderLineItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /*
@@ -25,6 +26,46 @@ public class Order
      */
     public void addItem(OrderLineItem item)
     {
+        // check if the item is already in the cart
+//        OrderLineItem currentItem = null;
+//
+//        for(var lineItem : shoppingCart)
+//        {
+//            if(lineItem.getProduct().equalsIgnoreCase(item.getProduct()))
+//            {
+//                currentItem = lineItem;
+//                break;
+//            }
+//        }
+//
+//        if(currentItem != null)
+//        {
+//            int newQuantity = currentItem.getQuantity() + item.getQuantity();
+//            currentItem.setQuantity(newQuantity);
+//        }
+//        else
+//        {
+//            // or add a new item
+//            shoppingCart.add(item);
+//        }
+
+        var existingItem = shoppingCart.stream()
+                                       .filter(lineItem -> {
+                                           return lineItem.getProduct().equalsIgnoreCase(item.getProduct());
+                                       })
+                                       .findFirst();
+
+        // either update the quantity
+        if(existingItem.isPresent()) {
+            var currentItem = existingItem.get();
+            int newQuantity = currentItem.getQuantity() + item.getQuantity();
+            currentItem.setQuantity(newQuantity);
+        }
+        else
+        {
+            // or add a new item
+            shoppingCart.add(item);
+        }
     }
 
     /*
