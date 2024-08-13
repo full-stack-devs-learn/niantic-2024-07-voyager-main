@@ -56,31 +56,37 @@ header {
 .container {
     width: 60vw;
     margin: 0 auto 0 auto;
-    font-size: 1.5em;
 }
 
 nav {
     background-color: #f5ab1e;
 }
 
-#top-nav {
+nav ul {
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 50px;
 }
 
-#top-nav li {
-    display: inline-block;
-    margin-right: 50px;
+#top-nav li {   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #ffffff;
-    height: 50px;
-    padding-top: 15px;
     text-transform: uppercase;
     cursor: pointer;
+    height: 50px;
+    width: 75px;
 }
 #top-nav li:hover {
     color: #e01212;
     /* height: 33px; */
     border-bottom: solid 4px #e01212;
+    background-color: #d0962b;
 }
 
 .breadcrumb {
