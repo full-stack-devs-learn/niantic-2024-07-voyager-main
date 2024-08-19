@@ -2,6 +2,7 @@ package com.niantic.controllers;
 
 import com.niantic.models.Actor;
 import com.niantic.services.ActorsDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,8 @@ import java.util.ArrayList;
 @Controller
 public class ActorsController
 {
-    private ActorsDao actorsDao = new ActorsDao();
+    @Autowired
+    private ActorsDao actorsDao;
 
     // http://localhost:8080/actors
     @GetMapping("/actors")
@@ -38,6 +40,10 @@ public class ActorsController
     public String details(Model model, @PathVariable int id)
     {
         var actor = actorsDao.getActorById(id);
+        if(actor == null)
+        {
+            return "404";
+        }
         model.addAttribute("actor", actor);
         return "actors/details";
     }
