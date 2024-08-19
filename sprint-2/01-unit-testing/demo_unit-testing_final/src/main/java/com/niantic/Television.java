@@ -60,20 +60,32 @@ public class Television
     {
         if (isOn)
         {
-            return currentChannel + 1;
+            if(currentChannel < MAX_CHANNEL)
+            {
+                currentChannel++;
+            }
+            else {
+                currentChannel = MIN_CHANNEL;
+            }
         }
 
-        return currentChannel;
+        return getCurrentChannel();
     }
 
     public int channelDown()
     {
         if (isOn)
         {
-            return currentChannel - 1;
+            if(currentChannel > MIN_CHANNEL)
+            {
+                currentChannel--;
+            }
+            else {
+                currentChannel = MAX_CHANNEL;
+            }
         }
 
-        return currentChannel;
+        return getCurrentChannel();
     }
 
     public boolean changeVolume(int newVolume)
