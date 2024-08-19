@@ -8,7 +8,7 @@
 <div th:replace="fragments/navigation :: nav"></div>
 
 <main class="container mt-4">
-    <h1 th:if="${action} =='add'" th:text="${action}">Add Actor</h1>
+    <h1 th:if="${action} =='add'">Add Actor</h1>
     <h1 th:if="${action} =='edit'">Edit Actor</h1>
 
     <form method="post" th:object="${actor}">

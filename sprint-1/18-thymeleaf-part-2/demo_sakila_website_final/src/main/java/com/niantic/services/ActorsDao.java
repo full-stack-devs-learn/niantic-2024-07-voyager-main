@@ -15,8 +15,15 @@ public class ActorsDao
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public ActorsDao(DataSource dataSource)
+    public ActorsDao()
     {
+        // 1. create a data source
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl("jdbc:mysql://localhost:3306/sakila");
+        dataSource.setUsername("root");
+        dataSource.setPassword("P@ssw0rd");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
