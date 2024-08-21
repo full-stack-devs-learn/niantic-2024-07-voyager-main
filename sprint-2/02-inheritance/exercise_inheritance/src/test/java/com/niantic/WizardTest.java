@@ -4,17 +4,26 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class WizardTest extends ReflectionBase<Wizard>
 {
     Class<Wizard> klass;
+    Method levelUp;
+    Method getHealth;
+    Method getLevel;
 
     @BeforeEach
     void setup()
     {
         klass = Wizard.class;
+
+        levelUp = getMethod(klass, "levelUp", Integer.class);
+        getHealth = getMethod(klass, "getHealth");
+        getLevel = getMethod(klass, "getLevel");
+
     }
 
     @Test
@@ -152,7 +161,7 @@ class WizardTest extends ReflectionBase<Wizard>
         var getMana = getMethod(klass, "getMana");
 
         // act
-        champ.levelUp();
+        levelUp.invoke(champ);
 
         // assert
         Object mana = getMana.invoke(champ);
@@ -161,8 +170,8 @@ class WizardTest extends ReflectionBase<Wizard>
         var expectedLevel = 2;
         var expectedMana = 110;
 
-        var actualHealth = champ.getHealth();
-        var actualLevel = champ.getLevel();
+        var actualHealth = (int)getHealth.invoke(champ);
+        var actualLevel = (int)getLevel.invoke(champ);
         var actualMana = (int)mana;
 
         assertEquals(expectedHealth, actualHealth, "Because the wizard leveled up which should have added health.");
@@ -177,10 +186,13 @@ class WizardTest extends ReflectionBase<Wizard>
         // arrange
         var constructor = getConstructor(klass, String.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE);
         var champ = constructor.newInstance("Gandalf", 0, 1, 200, 100);
+        var levelUp = getMethod(klass, "levelUp", Integer.class);
+        var getHealth = getMethod(klass, "getHealth");
+        var getlevel = getMethod(klass, "getlevel");
         var getMana = getMethod(klass, "getMana");
 
         // act
-        champ.levelUp();
+        levelUp.invoke(champ);
 
         // assert
         Object mana = getMana.invoke(champ);
@@ -189,8 +201,8 @@ class WizardTest extends ReflectionBase<Wizard>
         var expectedLevel = 1;
         var expectedMana = 100;
 
-        var actualHealth = champ.getHealth();
-        var actualLevel = champ.getLevel();
+        var actualHealth = (int)getHealth.invoke(champ);
+        var actualLevel = (int)getlevel.invoke(champ);
         var actualMana = (int)mana;
 
         assertEquals(expectedHealth, actualHealth, "Because the wizard should NOT have leveled up.");
