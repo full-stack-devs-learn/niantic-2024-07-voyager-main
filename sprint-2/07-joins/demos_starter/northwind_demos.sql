@@ -13,4 +13,8 @@ INNER JOIN products AS p
 GROUP BY c.company_name
 	, p.product_name
 HAVING count >= 2
-ORDER BY count desc
+ORDER BY count desc;
+
+
+
+
