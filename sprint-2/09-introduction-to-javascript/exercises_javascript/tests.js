@@ -330,6 +330,15 @@ describe("Lab - Programming with JavaScript", () =>
 
         actual.should.eql({});
       });
+
+      it("Should return a Custom 3 topping", () =>
+      {
+        const expected = {}
+        
+        const actual = makeCustom(null, mushroom, artichoke)
+
+        actual.should.eql(expected);
+      });
     })    
 
     describe("4. Create Order", () =>

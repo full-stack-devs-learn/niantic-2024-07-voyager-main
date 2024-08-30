@@ -64,6 +64,46 @@
 
 */
 
+function makeCustom(topping1, topping2, topping3) 
+{
+	if(topping1 && topping2 && topping3)
+	{
+		return {
+			name: "Custom",
+			toppings: [topping1, topping2, topping3]
+		}
+	} 
+	else if(topping1 && topping2)
+	{
+		return {
+			name: "Custom",
+			toppings: [topping1, topping2]
+		}
+	}
+	else if(topping1)
+	{
+		return {
+			name: "Custom",
+			toppings: [topping1]
+		}
+	}
+
+	return {};
+}
+
+
+function makeCustom2(...toppings) 
+{
+	if(toppings.length === 0) return {};
+
+	const order = {
+		name: "Custom",
+		toppings: toppings
+	}
+
+	return order;
+}
+
 
 
 
