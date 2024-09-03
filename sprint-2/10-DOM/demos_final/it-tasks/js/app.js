@@ -103,6 +103,13 @@ function buildTaskTitle(task, parent){
 
 }
 
+function completeHighPriority()
+{
+    const taskDivs = document.querySelectorAll(".task.high");
+    
+    taskDivs.forEach(task => task.remove())
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
