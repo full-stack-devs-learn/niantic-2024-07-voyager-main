@@ -105,9 +105,9 @@ function buildTaskTitle(task, parent){
 
 function completeHighPriority()
 {
-    const taskDivs = document.querySelectorAll(".task.high");
-    
-    taskDivs.forEach(task => task.remove())
+    const divs = document.querySelectorAll(".task.high");
+
+    divs.forEach( div => div.remove())
 }
 
 
