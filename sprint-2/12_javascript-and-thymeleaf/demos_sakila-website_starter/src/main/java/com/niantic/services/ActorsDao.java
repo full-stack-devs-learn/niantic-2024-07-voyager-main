@@ -119,6 +119,23 @@ public class ActorsDao
         return actors;
     }
 
+    public int getActorCount()
+    {
+        String sql = """
+                SELECT count(*) AS actor_count
+                FROM actor
+                """;
+
+        var row = jdbcTemplate.queryForRowSet(sql);
+
+        if(row.next())
+        {
+            return row.getInt("actor_count");
+        }
+
+        return 0;
+    }
+
     public Actor getActorById(int id)
     {
         String sql = """

@@ -4,6 +4,7 @@
 <div th:replace="fragments/head :: head"></div>
 
 <body>
+<script src="/js/actors-list-dom.js" ></script>
 
 <div th:replace="fragments/navigation :: nav"></div>
 
@@ -22,17 +23,16 @@
         </thead>
 
         <tbody id="actor-container">
-        <tr th:each="actor:${actors}" class="magenta">
-            <td th:text="${actor.actorId}"></td>
-            <td><a th:href="@{|/actors/${actor.actorId}|}" th:text="${actor.firstName}"></a></td>
-            <td th:text="${actor.lastName}"></td>
-            <td>
-                <a th:href="@{|/actors/${actor.actorId}/edit|}" class="btn btn-outline-warning">Edit</a>
-                <a th:href="@{|/actors/${actor.actorId}/delete|}" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
+
         </tbody>
     </table>
+
+    <div class="btn-group">
+        <button id="first" type="button" class="btn btn-primary">&lt;&lt;</button>
+        <button id="previous" type="button" class="btn btn-primary">&lt;</button>
+        <button id="next" type="button" class="btn btn-primary">&gt;</button>
+        <button id="last" type="button" class="btn btn-primary">&gt;&gt;</button>
+    </div>
 </main>
 </body>
 </html>

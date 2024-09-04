@@ -2,8 +2,10 @@ package com.niantic.controllers;
 
 import com.niantic.models.Actor;
 import com.niantic.services.ActorsDao;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,20 +15,14 @@ public class ActorsController
 {
     private ActorsDao actorsDao = new ActorsDao();
 
+
     // http://localhost:8080/actors
     @GetMapping("/actors")
-    public String getAllActors(Model model, @RequestParam(required = false) String last)
+    public String getAllActors(Model model, @RequestParam(defaultValue = "1") Integer page)
     {
         ArrayList<Actor> actors;
 
-        if(last == null)
-        {
-            actors = actorsDao.getAllActors();
-        }
-        else
-        {
-            actors = actorsDao.getActorsByLastName(last);
-        }
+        actors = actorsDao.getActors(page);
 
         model.addAttribute("actors", actors);
         return "actors/index";
@@ -41,7 +37,7 @@ public class ActorsController
         StringBuilder builder = new StringBuilder();
 
         model.addAttribute("actors", actors);
-        return "actor-table-list";
+        return "/actors/fragments/actor-table-list";
     }
 
     @GetMapping("/actors/{id}")
@@ -50,6 +46,13 @@ public class ActorsController
         var actor = actorsDao.getActorById(id);
         model.addAttribute("actor", actor);
         return "actors/details";
+    }
+
+    @GetMapping("/actors/add/{name}")
+    public String addSuccess(Model model, @PathVariable String name)
+    {
+        model.addAttribute("name", name);
+        return "actors/add_success";
     }
 
     // GET = show me the form
@@ -63,11 +66,17 @@ public class ActorsController
 
     // POST = I am submitting the form
     @PostMapping("/actors/add")
-    public String addActor(Model model, @ModelAttribute("actor") Actor actor)
+    public String addActor(Model model, @Valid @ModelAttribute("actor") Actor actor, BindingResult result)
     {
+        if(result.hasErrors())
+        {
+            model.addAttribute("isInvalid", true);
+            // redirect back to the add page
+            return "actors/add_edit";
+        }
+
         actorsDao.addActor(actor);
-        model.addAttribute("actor", actor);
-        return "actors/add_success";
+        return "redirect:/actors/add/" + actor.getFirstName();
     }
 
     @GetMapping("/actors/{id}/edit")
