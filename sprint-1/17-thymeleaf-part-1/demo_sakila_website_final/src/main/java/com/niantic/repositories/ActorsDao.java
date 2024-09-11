@@ -1,4 +1,4 @@
-package com.niantic.services;
+package com.niantic.repositories;
 
 import com.niantic.models.Actor;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -6,28 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.util.ArrayList;
 
-@Component
-public class ActorsDao
+// DaoBase provides the JdbcTemplate
+public class ActorsDao extends DaoBase
 {
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    public ActorsDao()
-    {
-        // 1. create a data source
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/sakila");
-        dataSource.setUsername("root");
-        dataSource.setPassword("P@ssw0rd");
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-
-        jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
-
     public ArrayList<Actor> getAllActors()
     {
         // 2. execute the query
@@ -44,7 +27,7 @@ public class ActorsDao
 
         // 3. loop through all rows
         //    and create a list of actors
-        while(row.next())
+        while (row.next())
         {
             int actorId = row.getInt("actor_id");
             String firstName = row.getString("first_name");
@@ -75,7 +58,7 @@ public class ActorsDao
 
         // 3. loop through all rows
         //    and create a list of actors
-        while(row.next())
+        while (row.next())
         {
             int actorId = row.getInt("actor_id");
             String firstName = row.getString("first_name");
@@ -100,7 +83,7 @@ public class ActorsDao
 
         var row = jdbcTemplate.queryForRowSet(sql, id);
 
-        if(row.next())
+        if (row.next())
         {
             int actorId = row.getInt("actor_id");
             String firstName = row.getString("first_name");
@@ -117,8 +100,10 @@ public class ActorsDao
         String sql = "INSERT INTO actor (first_name, last_name) VALUES (?,?);";
 
         jdbcTemplate.update(sql,
-                            actor.getFirstName().toUpperCase(),
-                            actor.getLastName().toUpperCase());
+                            actor.getFirstName()
+                                 .toUpperCase(),
+                            actor.getLastName()
+                                 .toUpperCase());
 
     }
 
@@ -132,10 +117,10 @@ public class ActorsDao
                 """;
 
         jdbcTemplate.update(sql,
-                    actor.getFirstName(),
-                    actor.getLastName(),
-                    actor.getActorId()
-                );
+                            actor.getFirstName(),
+                            actor.getLastName(),
+                            actor.getActorId()
+        );
     }
 
     public void deleteActor(int id)

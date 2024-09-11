@@ -1,7 +1,8 @@
 package com.niantic.controllers;
 
 import com.niantic.models.Actor;
-import com.niantic.services.ActorsDao;
+import com.niantic.services.ActorsService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,25 +14,13 @@ import java.util.ArrayList;
 @Controller
 public class ActorsController
 {
-    private ActorsDao actorsDao = new ActorsDao();
+    private ActorsService actorsService = new ActorsService();
 
     // https://localhost:8080/actors
     @GetMapping("/actors")
     public String getAllActors(Model model, @RequestParam(required = false) String last)
     {
-        ArrayList<Actor> actors;
-
-        if(last == null)
-        {
-            actors = actorsDao.getAllActors();
-        }
-        else
-        {
-            actors = actorsDao.getActorsByLastName(last);
-        }
-
-        StringBuilder builder = new StringBuilder();
-
+        ArrayList<Actor> actors = actorsService.searchByLastName(last);
         model.addAttribute("actors", actors);
         return "actors/index";
     }
@@ -39,7 +28,7 @@ public class ActorsController
     @GetMapping("/actors/{id}")
     public String details(Model model, @PathVariable int id)
     {
-        var actor = actorsDao.getActorById(id);
+        var actor = actorsService.getById(id);
         model.addAttribute("actor", actor);
         return "actors/details";
     }
