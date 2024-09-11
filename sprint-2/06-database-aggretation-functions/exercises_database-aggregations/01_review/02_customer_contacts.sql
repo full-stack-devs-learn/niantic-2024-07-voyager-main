@@ -10,5 +10,11 @@
 
 -- (78 Rows)
 
+SELECT company_name,
+	contact_name,
+    contact_title,
+    CONCAT(COALESCE(city, ', '), ' ', COALESCE(region, ' '), COALESCE(postal_code, '')) AS city_state_zip
+FROM customers
+WHERE country != 'USA';
 
 

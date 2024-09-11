@@ -12,6 +12,12 @@
 
 -- (1 row)
 
-
+SELECT company_name,
+	order_id,
+    country,
+    (sales_price * quantity) AS total_sales_amount
+FROM customer_orders
+ORDER BY (sales_price * quantity) DESC
+LIMIT 5;
 
 

@@ -23,4 +23,19 @@
 
 USE northwind;
 
+-- cte
+WITH max_prices AS (
+		SELECT category_id,
+			MAX(unit_price) AS max_price
+		FROM products AS p
+        GROUP BY category_id
+	) 
 
+SELECT c.category_name,
+	p.product_name,
+	p.unit_price
+FROM products AS p
+INNER JOIN categories AS c ON c.category_id = p.category_id
+INNER JOIN max_prices AS m ON p.category_id = m.category_id
+	AND p.unit_price = m.max_price
+ORDER BY c.category_name, p.product_name;

@@ -6,7 +6,12 @@
 -- (10 rows)
 
 
-
+SELECT city,
+	COUNT(*) AS total_customer_count
+FROM customers
+GROUP BY city
+HAVING COUNT(*) > 1
+ORDER BY COUNT(*) DESC;
 
 
 
