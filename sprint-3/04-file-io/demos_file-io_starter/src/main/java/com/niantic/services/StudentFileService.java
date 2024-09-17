@@ -3,6 +3,7 @@ package com.niantic.services;
 import com.niantic.models.Student;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -55,5 +56,14 @@ public class StudentFileService implements StudentService
         }
 
         return students;
+    }
+
+    public void writeToFile()
+    {
+        File directory = new File("reports");
+        if (!directory.exists()) directory.mkdir();
+
+        File file = new File("reports/students.txt");
+
     }
 }
