@@ -87,6 +87,7 @@ public class MySqlCategoryDao implements CategoryDao
                 VALUES (?,?)
                 """;
 
+
         // insert a new record and retrieve the generated id
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
