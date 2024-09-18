@@ -1,0 +1,5 @@
+All Students: 2024-09-16
+----------------------------------------
+Lowest Score:  80 
+Highest Score: 100 
+Average Score: 89.65 
