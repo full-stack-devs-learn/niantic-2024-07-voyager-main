@@ -24,7 +24,7 @@ public class CategoriesController
         this.logger = logger;
     }
 
-    @GetMapping("")
+    @GetMapping({"", "/"})
     public ResponseEntity<?> getAllCategories()
     {
         try

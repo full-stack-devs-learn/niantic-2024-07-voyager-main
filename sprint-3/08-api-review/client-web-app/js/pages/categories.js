@@ -22,18 +22,18 @@ function loadCategories()
             categoryContainer.innerHTML = '';
 
             categories.forEach(category => {
-                const template = document.getElementById('category-template').content.cloneNode(true);
-                template.getElementById('category-header').innerText = category.categoryName;
-                template.getElementById('category-image').src = `images/${category.categoryId}.webp`;
+                const clone = document.getElementById('category-template').content.cloneNode(true);
+                clone.getElementById('category-header').innerText = category.categoryName;
+                clone.getElementById('category-image').src = `images/${category.categoryId}.webp`;
 
-                const deleteButton = template.querySelector('.card-footer #delete-button');
+                const deleteButton = clone.querySelector('.card-footer #delete-button');
                 deleteButton.addEventListener('click', () => {
                     categoryService.deleteCategory(category.categoryId).then(() => {
                         loadCategories();
                     })
                 });
 
-                categoryContainer.appendChild(template);
+                categoryContainer.appendChild(clone);
             })
         });
 }
