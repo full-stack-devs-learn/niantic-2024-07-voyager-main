@@ -1,7 +1,6 @@
-package com.niantic.services;
+package com.niantic.repositories;
 
 import com.niantic.models.Category;
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -31,10 +30,9 @@ public class MySqlCategoryDao implements CategoryDao
         List<Category> categories = new ArrayList<>();
 
         String sql = """
-        
                 SELECT category_id, category_name, description
-        FROM categories
-        """;
+                FROM categories
+                """;
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
 
@@ -90,11 +88,11 @@ public class MySqlCategoryDao implements CategoryDao
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection -> {
-            // we have to define the PreparedStatement directly
-            // Statement.RETURN_GENERATED_KEYS is only used for auto generated ids
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
             statement.setString(1, category.getCategoryName());
             statement.setString(2, category.getDescription());
+
             return statement;
         }, keyHolder);
 

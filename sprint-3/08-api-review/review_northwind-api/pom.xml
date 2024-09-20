@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.niantic</groupId>
-	<artifactId>demo_sakila_website</artifactId>
+	<artifactId>northwind-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo_sakila_website</name>
+	<name>northwind-api</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

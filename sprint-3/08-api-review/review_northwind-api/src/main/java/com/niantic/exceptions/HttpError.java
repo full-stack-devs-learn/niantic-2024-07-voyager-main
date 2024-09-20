@@ -1,17 +1,17 @@
-package com.niantic.models;
+package com.niantic.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category
+public class HttpError
 {
-    private int categoryId;
-    private String categoryName;
-    private String description;
+    private int code;
+    private String error;
+    private String message;
 }
