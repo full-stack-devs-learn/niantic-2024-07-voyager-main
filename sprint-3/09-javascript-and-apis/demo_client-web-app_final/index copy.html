@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Northwind Home</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/minty/bootstrap.min.css" integrity="sha512-+/uDiVv4ZLhHnXToJFPwYK08kkG2et1rSuiitOl+0hdzmx2N6HQaMqm/7ORzr8dhco+cyGZCRxkXU7EMMYOLfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--  JS  -->
+    <script src="js/lib/axios.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/services/categories-service.js"></script>
+    <script src="js/pages/categories-page-2.js"></script>
+</head>
+<body>
+
+<header class="container mt-4">
+    <h1>Categories</h1>
+</header>
+
+<main class="container mt-4 categories-container" id="categories-container">
+
+</main>
+
+<template id="category-template">
+    <div class="card category-card">
+        <div id="category-header" class="card-header"></div>
+        <div id="category-body" class="card-body">
+            <a href="/products.html?catId=" id="products-link" class="btn btn-link">
+            <img id="category-image">
+            </a>
+        </div>
+        <div class="card-footer">
+            <div id="edit-button" class="btn btn-link">edit</div>
+        </div>
+    </div>
+</template>
+
+
+</body>
+</html>
