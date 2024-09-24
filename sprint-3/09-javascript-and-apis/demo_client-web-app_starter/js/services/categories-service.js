@@ -2,28 +2,42 @@ class CategoryService
 {
     baseUrl = `${config.baseUrl}/categories`;
 
-    getAllCategories()
+    async getAllCategories()
     {
-        return axios.get(this.baseUrl)
-            .then(response => {
-                return response.data;
-            });
+        const response = await axios.get(this.baseUrl);
+        return response.data;
     }
 
-    getCategoryById(categoryId)
+    async getCategoryById(categoryId)
     {
-        return axios.get(`${this.baseUrl}/${categoryId}`)
-            .then(response => {
-                return response.data;
-            });
+        const response = await axios.get(`${this.baseUrl}/${categoryId}`);
+        return response.data;
     }
 
-    addCategory(category)
+    async addCategory(category)
     {
-        return axios.post(this.baseUrl, category)
-            .then(response => {
-                return response.data;
-            });
+        // // example using async/await with fetch
+        // const response =  await fetch(this.baseUrl, {
+        //                             method: POST,
+        //                             headers: {
+        //                                 'Content-Type': 'application/json',
+        //                             },
+        //                             body: JSON.stringify(category)
+        //                         });
+
+        // if(!response.ok)
+        // {
+        //     throw new Error("Something went wrong")
+        // }
+
+        // const data = await response.json()
+        
+        // return data;
+
+
+        // example using async/await with axios
+        const response = await axios.post(this.baseUrl, category);
+        return response.data;
     }
 
     updateCategory(categoryId, category)

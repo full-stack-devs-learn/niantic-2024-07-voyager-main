@@ -12,9 +12,10 @@
     <script src="js/lib/axios.min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/services/categories-service.js"></script>
-    <script src="js/pages/categories.js"></script>
+    <script src="js/pages/categories-page.js"></script>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Northwind</a>
@@ -25,7 +26,6 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Home
-                        <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -36,10 +36,10 @@
     </div>
 </nav>
 
-<main class="container mt-4">
+<header class="container mt-4">
     <h1>Categories</h1>
     <button id="add-button" class="btn btn-warning">Add</button>
-</main>
+</header>
 
 <main class="container mt-4 categories-container" id="categories-container">
 
@@ -52,6 +52,8 @@
             <img id="category-image">
         </div>
         <div class="card-footer">
+            <a href="/products.html?catId=" id="products-link" class="btn btn-link">products</a>
+            <div id="edit-button" class="btn btn-link">edit</div>
             <div id="delete-button" class="btn btn-link">delete</div>
         </div>
     </div>
@@ -77,9 +79,11 @@
         </div>
         <div class="card-footer add-form-buttons">
             <button class="btn btn-danger" id="cancel-button" type="reset">Cancel</button>
-            <button class="btn btn-success" id="save-button" type="submit">Save</button>
+            <button class="btn btn-success" id="save-button" type="submit">Add</button>
+            <button class="btn btn-success d-none" id="update-button" type="submit">Update</button>
         </div>
     </form>
 </div>
+
 </body>
 </html>

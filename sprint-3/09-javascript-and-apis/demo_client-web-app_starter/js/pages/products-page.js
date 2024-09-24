@@ -2,10 +2,15 @@ let categoryService;
 let productService;
 let addFormScreen;
 let addForm;
+let categoryId;
 
 document.addEventListener("DOMContentLoaded", function() {
     categoryService = new CategoryService();
     productService = new ProductsService();
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    categoryId = urlParams.get('catId'); 
 
     addFormScreen = document.getElementById("add-form-screen");
     addForm = document.getElementById("add-form");
