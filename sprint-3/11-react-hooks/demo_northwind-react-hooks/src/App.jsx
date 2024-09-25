@@ -4,12 +4,15 @@ import CategoriesPage from "./components/categories/cagtegories-page/CategoriesP
 import ProductsPage from "./components/products/products-page/ProductsPage"
 
 function App() {
-  const [pageName, setPageName] = useState("products")
+  const [pageName, setPageName] = useState("categories")
 
-  const pageChangeHanlder = (pageName) =>
+  const pageChangeHanlder = (newPage) =>
   {
-    setPageName(pageName)
+    setPageName(newPage);
+    console.log("changing page to: " + pageName); 
   }
+
+  console.log("page render: " + pageName)
   
 
   return (
