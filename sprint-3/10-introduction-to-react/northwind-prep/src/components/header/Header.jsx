@@ -1,4 +1,4 @@
-import styles from './Header.css'
+import './Header.css'
 
 export default function Header({onPageChanged})
 {

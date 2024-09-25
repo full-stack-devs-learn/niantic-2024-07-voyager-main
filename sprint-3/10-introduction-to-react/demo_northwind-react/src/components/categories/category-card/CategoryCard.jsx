@@ -1,4 +1,5 @@
 import './CategoryCard.css'
+import {PencilFill} from 'react-bootstrap-icons'
 
 export default function CategoryCard({id, category, onCategorySelected})
 {
@@ -15,6 +16,9 @@ export default function CategoryCard({id, category, onCategorySelected})
             <div id="category-header" className="card-header">{category}</div>
             <div id="category-body" className="card-body">
                 <img id="category-image" src={imageUrl} />
+            </div>
+            <div className="card-footer">
+                <PencilFill className="edit"/>
             </div>
         </div>
     )
