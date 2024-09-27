@@ -13,19 +13,15 @@ import java.util.ArrayList;
 @Controller
 public class ActorsController
 {
-    private ActorsDao actorsDao = new ActorsDao();
+    private final ActorsDao actorsDao = new ActorsDao();
 
-
-    // http://localhost:8080/actors
     @GetMapping("/actors")
-    public String getAllActors(Model model, @RequestParam(defaultValue = "1") Integer page)
+    public String getAllActors(Model model)
     {
-        ArrayList<Actor> actors;
-
-        actors = actorsDao.getActors(page);
+        var actors = actorsDao.getAllActors();
 
         model.addAttribute("actors", actors);
-        return "actors/index";
+        return "actors/list";
     }
 
     @GetMapping("/actors/page/{page}")
