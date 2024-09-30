@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FormEvent, useState } from "react";
 import categoryService from "../../../services/category-service"
 
-export default function CategoryAdd({onCancel, onCategoryAdded})
+export default function CategoryAdd<CategoryProps>()
 {
+    const navigate = useNavigate();
     const [categoryName, setCategoryName] = useState('');
     const [description, setDescription] = useState('');
 
-    async function addCategoryHandler(event)
+    async function addCategoryHandler(event: FormEvent<HTMLFormElement>)
     {
         event.preventDefault()
+        event.stopPropagation()
 
         const newCategory = {
             categoryName: categoryName,
@@ -18,8 +21,14 @@ export default function CategoryAdd({onCancel, onCategoryAdded})
 
         // call my api
         await categoryService.add(newCategory)
+
+        goHome()
     
-        onCategoryAdded()
+    }
+
+    function goHome()
+    {
+        navigate('/categories', { replace: true });
     }
 
     return (
@@ -39,7 +48,7 @@ export default function CategoryAdd({onCancel, onCategoryAdded})
                     onChange={(e) => setDescription(e.target.value)} />
             </div>
             <button className="btn btn-danger mr-3" type="submit">Add Category</button>
-            <button className="btn btn-dark" type="cancel" onClick={onCancel}>Cancel</button>
+            <button className="btn btn-dark" type="reset" onClick={goHome}>Cancel</button>
         </form>
         </div>
     )

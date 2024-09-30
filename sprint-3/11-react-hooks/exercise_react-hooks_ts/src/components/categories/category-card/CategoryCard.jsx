@@ -1,6 +1,7 @@
 import categoryService from '../../../services/category-service'
 import './CategoryCard.css'
 import { XCircle, XCircleFill } from 'react-bootstrap-icons'
+import { Link } from 'react-router-dom'
 
 export default function CategoryCard({id, category, onCategorySelected, onCategoryDeleted})
 {
@@ -23,7 +24,7 @@ export default function CategoryCard({id, category, onCategorySelected, onCatego
 
 
     return(
-        <div className="card category-card" onClick={categoryClicked}>
+        <Link className="card category-card" to={`/categories/${id}`}>
             <div id="category-header" className="card-header">{category}</div>
             <div id="category-body" className="card-body">
                 <img id="category-image" src={imageUrl} />
@@ -31,6 +32,6 @@ export default function CategoryCard({id, category, onCategorySelected, onCatego
             <div className="card-footer">
                 <XCircleFill onClick={deleteCategory} color="red" />
             </div>
-        </div>
+        </Link>
     )
 }
