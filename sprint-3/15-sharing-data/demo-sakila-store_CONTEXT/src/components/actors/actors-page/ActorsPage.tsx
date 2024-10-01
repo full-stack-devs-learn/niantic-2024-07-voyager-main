@@ -6,12 +6,9 @@ import ActorsContextProvider from "../../../contexts/ActorsContextProvider";
 
 export default function ActorsPage() {
     return (
+
         <ActorsContextProvider>
-            {/* <Routes>
-                <Route path='' element={<ActorsList />} />
-                <Route path=':actorId' element={<ActorDetails />} />
-                <Route path='add' element={<ActorAdd />} />
-            </Routes> */}
+           
             <h1>Actors</h1>
 
             <Outlet />
