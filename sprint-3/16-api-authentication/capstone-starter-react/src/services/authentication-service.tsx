@@ -10,7 +10,6 @@ class AuthenticationService
     async login(login: LoginCredentials): Promise<AuthenticatedUser>
     {
 
-
         const response = await axios.post<AuthenticatedUser>(`${this.baseUrl}/login`, login)
 
         localStorage.setItem('user',JSON.stringify(response.data))

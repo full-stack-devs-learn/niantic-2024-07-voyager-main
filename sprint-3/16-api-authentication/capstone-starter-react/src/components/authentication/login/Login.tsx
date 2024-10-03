@@ -39,7 +39,7 @@ export default function Login()
             </div>
 
             <div className="row">
-                <label htmlFor="password">Last Name:</label>
+                <label htmlFor="password">Password:</label>
                 <input type="password" className="form-control" name="password" id="password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
