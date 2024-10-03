@@ -5,5 +5,7 @@
 -- (1 row) - $60616.51
 
 
-
+SELECT SUM(sales_price * quantity)
+FROM customer_orders
+WHERE country = 'UK';
 

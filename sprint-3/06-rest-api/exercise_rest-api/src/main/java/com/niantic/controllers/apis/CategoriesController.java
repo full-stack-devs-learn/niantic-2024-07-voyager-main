@@ -4,6 +4,7 @@ import com.niantic.models.Category;
 import com.niantic.services.CategoryDao;
 import com.niantic.services.MySqlCategoryDao;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,15 +15,35 @@ public class CategoriesController
     private CategoryDao categoryDao = new MySqlCategoryDao();
 
     @GetMapping("/api/categories")
-    public List<Category> getAllCategories()
+    public ResponseEntity<List<Category>> getAllCategories()
     {
-        return categoryDao.getCategories();
+        try
+        {
+            return new ResponseEntity<>(categoryDao.getCategories(), HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/api/categories/{id}")
-    public Category getCategory(@PathVariable int id)
+    public ResponseEntity<Category> getCategory(@PathVariable int id)
     {
-        return categoryDao.getCategory(id);
+        try
+        {
+            var category = categoryDao.getCategory(id);
+            if(category == null)
+            {
+                return ResponseEntity.notFound().build();
+            }
+
+            return ResponseEntity.ok(category);
+        }
+        catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PostMapping("/api/categories")

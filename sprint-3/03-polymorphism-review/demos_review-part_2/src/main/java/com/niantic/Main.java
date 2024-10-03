@@ -15,7 +15,7 @@ public class Main
     public static void listDemos()
     {
         List<Athlete> athletes = new ArrayList<>();
-        athletes.add(new Student("John", "Doe"));
+        athletes.add(new Student("John", "Doe", 4.0));
         athletes.add(new HockeyPlayer("Jane", "Doe"));
 
         athletes.forEach(athlete -> {
@@ -33,7 +33,7 @@ public class Main
         long bigNumber = 500;
         int smallNumber = (int)bigNumber;
 
-        Musician chloe = new Student("Chloe", "Rose");
+        Musician chloe = new Student("Chloe", "Rose", 4.5);
         Athlete chloeAthlete = (Athlete)chloe;
 
         // this checks if the variable is of type Student

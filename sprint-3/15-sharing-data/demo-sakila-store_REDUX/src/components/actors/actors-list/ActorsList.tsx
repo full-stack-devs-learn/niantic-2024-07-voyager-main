@@ -14,8 +14,11 @@ export default function ActorsList()
     const { actors, loading , error } = useSelector((state: RootState) => state.actors )
 
     useEffect(() => { 
-        // tell the store to load the actors
-        dispatch(loadActors())
+        if(actors.length == 0)
+        {
+            // tell the store to load the actors
+            dispatch(loadActors(null))
+        }
     }, [dispatch])
 
 

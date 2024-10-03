@@ -4,5 +4,5 @@
  *   nonStart("Hello", "There") -> "ellohere"
  */
 function removeFirstLetter(word1, word2) {
-  return "";
+  return word1.substring(1) + word2.substring(1);
 }

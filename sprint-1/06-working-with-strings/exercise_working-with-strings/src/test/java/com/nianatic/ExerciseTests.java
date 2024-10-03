@@ -193,7 +193,7 @@ class ExerciseTests
         Exercises ex = new Exercises();
 
         // act
-        var actual = ex.createUserName(fullName);
+        var actual = ex.createUserName("   " + fullName);
 
         // arrange
         System.out.println("7) Create user name");

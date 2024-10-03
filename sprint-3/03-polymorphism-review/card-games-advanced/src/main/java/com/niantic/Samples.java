@@ -26,9 +26,9 @@ public class Samples
 //
 //        FaceCard q = CardBuilder.QUEEN_DIAMONDS();
 //        FaceCard k = CardBuilder.KING_DIAMONDS();
-        demo();
+//        demo();
 
-//        cardValues();
+        cardValues();
     }
 
     public static void cardValues()

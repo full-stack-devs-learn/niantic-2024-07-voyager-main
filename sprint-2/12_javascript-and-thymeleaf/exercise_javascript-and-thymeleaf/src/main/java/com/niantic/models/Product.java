@@ -6,12 +6,16 @@ public class Product
     private int categoryId;
     private String productName;
     private String quantityPerUnit;
-    private double unitPrice;
-    private int unitsInStock;
-    private int unitsOnOrder;
-    private int reorderLevel;
+    private Double unitPrice;
+    private Integer unitsInStock;
+    private Integer unitsOnOrder;
+    private Integer reorderLevel;
 
-    public Product(int productId, int categoryId, String productName, String quantityPerUnit, double unitPrice, int unitsInStock, int unitsOnOrder, int reorderLevel)
+    public Product()
+    {
+    }
+
+    public Product(int productId, int categoryId, String productName, String quantityPerUnit, Double unitPrice, Integer unitsInStock, Integer unitsOnOrder, Integer reorderLevel)
     {
         this.productId = productId;
         this.categoryId = categoryId;
@@ -21,10 +25,6 @@ public class Product
         this.unitsInStock = unitsInStock;
         this.unitsOnOrder = unitsOnOrder;
         this.reorderLevel = reorderLevel;
-    }
-
-    public Product()
-    {
     }
 
     public int getProductId()
@@ -67,42 +67,42 @@ public class Product
         this.quantityPerUnit = quantityPerUnit;
     }
 
-    public double getUnitPrice()
+    public Double getUnitPrice()
     {
         return unitPrice;
     }
 
-    public void setUnitPrice(double unitPrice)
+    public void setUnitPrice(Double unitPrice)
     {
         this.unitPrice = unitPrice;
     }
 
-    public int getUnitsInStock()
+    public Integer getUnitsInStock()
     {
         return unitsInStock;
     }
 
-    public void setUnitsInStock(int unitsInStock)
+    public void setUnitsInStock(Integer unitsInStock)
     {
         this.unitsInStock = unitsInStock;
     }
 
-    public int getUnitsOnOrder()
+    public Integer getUnitsOnOrder()
     {
         return unitsOnOrder;
     }
 
-    public void setUnitsOnOrder(int unitsOnOrder)
+    public void setUnitsOnOrder(Integer unitsOnOrder)
     {
         this.unitsOnOrder = unitsOnOrder;
     }
 
-    public int getReorderLevel()
+    public Integer getReorderLevel()
     {
         return reorderLevel;
     }
 
-    public void setReorderLevel(int reorderLevel)
+    public void setReorderLevel(Integer reorderLevel)
     {
         this.reorderLevel = reorderLevel;
     }

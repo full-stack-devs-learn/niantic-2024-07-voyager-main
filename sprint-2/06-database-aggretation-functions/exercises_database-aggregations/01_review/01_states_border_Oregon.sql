@@ -1,3 +1,5 @@
+USE northwind;
+
 -- 1. The name, city, state, and postal code of all
 -- Customers in the states that border Oregon.
 -- (Use the Customers table)
@@ -13,4 +15,8 @@
 -- Order the results alphabetically by city_state_zip.
 -- (5 rows)
 
-
+SELECT company_name,
+	CONCAT(city, ', ', region, ' ', postal_code) AS city_state_zip
+FROM customers
+WHERE region IN ('WA', 'ID', 'CA')
+ORDER BY CONCAT(city, ', ', region, ' ', postal_code);

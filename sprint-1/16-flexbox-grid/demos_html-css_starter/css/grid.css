@@ -10,7 +10,7 @@ body {
     height: 200vw
 }
 
-.div-1, .div-2, .div-3, .div-4 {
+nav, main, .div-2, .div-4 {
     background-color: white;
     border: solid 3px black;
     border-radius: 5px;
@@ -23,27 +23,84 @@ body {
     font-weight: 900;
 }
 
-.div-1 {
+nav {
     border-color: red;
     background-color: #ff000022;
+    grid-area: nav;
+    text-align: start;
+    padding: 0
 }
+
+nav ul {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+nav ul li {
+    list-style: none;
+    margin: 0 10px;
+}
+
 
 .div-2 {
     border-color: blue;
     background-color: #0000ff22;
+    grid-area: left
 }
 
-.div-3 {
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border-color: green;
     background-color: #00800022;
+    grid-area: main
 }
 
 .div-4 {
     border-color: orange;
     background-color: #ffa50022;
+    grid-area: foot
 }
 
 #parent-div {
+    display: grid;
+    grid-template-areas: 
+        "nav nav nav nav" 
+        "left main main main" 
+        "foot foot foot foot";
+
     border: solid 3px black;
     border-radius: 5px;
+    gap: 10px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    #parent-div {
+        grid-template-areas: 
+            "nav" 
+            "main" 
+            "left" 
+            "foot";
+    }
+    
+}
+@media screen and (max-width: 900px) {
+    #parent-div {
+        grid-template-areas: 
+            "nav" 
+            "main" 
+            "foot";
+    }
+
+    .div-2 {
+        display: none;
+    }
+
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
 }

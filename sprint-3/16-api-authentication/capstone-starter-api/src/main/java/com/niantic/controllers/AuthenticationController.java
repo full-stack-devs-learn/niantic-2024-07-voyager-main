@@ -26,7 +26,6 @@ import com.niantic.models.User;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("permitAll()")
 public class AuthenticationController
 {
 
@@ -46,7 +45,6 @@ public class AuthenticationController
     }
 
     @PostMapping("/login")
-    @PreAuthorize("permitAll()")
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody LoginDto loginDto) throws Exception
     {
         try

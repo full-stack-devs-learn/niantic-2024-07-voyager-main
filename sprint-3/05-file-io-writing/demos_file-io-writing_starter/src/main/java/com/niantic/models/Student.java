@@ -50,6 +50,6 @@ public class Student
     @Override
     public String toString()
     {
-        return String.format("%s %s (%.2f)", firstName, lastName, gpa);
+        return String.format("%-10s %-13s %.2f", firstName, lastName, gpa);
     }
 }

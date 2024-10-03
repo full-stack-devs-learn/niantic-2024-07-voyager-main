@@ -186,6 +186,55 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
-        return null;
+        // 1. it must be lowercase
+        String lowerCaseFullName = fullName.strip().toLowerCase();
+
+        // 2. remove suffix (anything after the comma)
+        String[] fullNameParts = lowerCaseFullName.split(",");
+        String nameOnly = fullNameParts[0];
+
+        // 3. middle names should only use the first letter
+        String[] names = nameOnly.split(" ");
+        String firstName = names[0];
+        String middleName = "";
+        String lastName = "";
+
+        if(names.length > 2)
+        {
+            // there is a middle name
+            middleName = names[1].substring(0,1);
+            lastName = names[2];
+        }
+        else
+        {
+            // there is NO middle name
+            lastName = names[1];
+        }
+
+        // 4. separate name parts with .
+        String userName = middleName.isEmpty()
+                            ? firstName + "." + lastName
+                            : firstName + "." + middleName + "." + lastName;
+
+//        if(middleName.isEmpty())
+//        {
+//            userName = firstName + "." + lastName;
+//        }
+//        else
+//        {
+//            userName = firstName + "." + middleName + "." + lastName;
+//        }
+
+//        switch(middleName)
+//        {
+//            case "":
+//                userName = firstName + "." + lastName;
+//                break;
+//            default:
+//                userName = firstName + "." + middleName + "." + lastName;
+//                break;
+//        }
+
+        return userName;
     }
 }

@@ -59,9 +59,9 @@ export default function Register()
                     <option value="Admin">Admin</option>
                 </select>
             </div>
-            <button className="btn btn-success mr-3" type="submit">Login</button>
+            <button className="btn btn-success mr-3" type="submit">Register</button>
         </form>
-        <Link to="/register">Register as new user</Link>
+        <Link to="/login">Login</Link>
         </div>
     )
 }

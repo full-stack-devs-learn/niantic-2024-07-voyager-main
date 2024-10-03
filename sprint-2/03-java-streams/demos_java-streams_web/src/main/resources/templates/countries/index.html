@@ -7,7 +7,10 @@
 
         <h2 class="mb-0">Search By <span th:text="${filter}"></span>: <span class="text-primary pl-3" th:text="${searchVal}"></span></h2>
         <form action="" method="get" class="mb-4 d-flex">
-            <input type="text" class="form-control" id="search" name="search" th:value="${search}">
+            <select class="form-select" name="search" id="search">
+                <option value="">Select an Option</option>
+                <option th:each="option: ${options}" th:value="${option}" th:text="${option}" th:selected="${option} == ${search}"></option>
+            </select>
             <input type="submit" value="Search" class="btn btn-primary">
         </form>
 

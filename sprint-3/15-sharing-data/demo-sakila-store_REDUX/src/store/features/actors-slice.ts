@@ -15,8 +15,13 @@ const initialState: ActorsState = {
     error: null
 }
 
-export const loadActors = createAsyncThunk('actors/getActors', async ()=> {
-    const actors = await actorService.getActors()
+
+export const loadActors = createAsyncThunk('actors/getActors', async (name: string | null)=> {
+    let actors = await actorService.getActors()
+    if(name !== null)
+    {
+      actors = actors.filter(actor => actor.lastName == name)
+    }
     return actors
 })
 

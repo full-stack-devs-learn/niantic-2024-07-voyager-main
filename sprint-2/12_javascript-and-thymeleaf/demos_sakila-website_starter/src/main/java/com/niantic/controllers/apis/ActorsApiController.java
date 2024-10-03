@@ -22,4 +22,14 @@ public class ActorsApiController
         return actors;
     }
 
+    @GetMapping("/api/actors/pages")
+    public int getActorPageCount()
+    {
+        int totalCount = actorsDao.getActorCount();
+        int pages = totalCount / 10;
+        if(totalCount % 10 > 0) pages ++;
+
+        return pages;
+    }
+
 }

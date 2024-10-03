@@ -14,6 +14,13 @@
 
 -- (3 rows)
 
+SELECT category_name, 
+	SUM(quantity),
+	COUNT(DISTINCT order_id) AS total_orders
+FROM customer_orders
+GROUP BY category_name 
+ORDER BY SUM(quantity) DESC, COUNT(DISTINCT order_id) DESC
+LIMIT 3;
 
 
 

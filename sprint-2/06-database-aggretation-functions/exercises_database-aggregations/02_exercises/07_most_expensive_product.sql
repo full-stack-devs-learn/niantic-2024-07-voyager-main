@@ -3,4 +3,5 @@
 -- (1 row)
 
 
-
+SELECT MAX(sales_price)
+FROM customer_orders;

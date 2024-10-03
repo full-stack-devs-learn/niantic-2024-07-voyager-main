@@ -12,7 +12,7 @@ export default function Header() {
     function handleLogout()
     {
         localStorage.removeItem('user')
-        dispatch(logout())
+        dispatch(logout()) 
     }
 
     return (

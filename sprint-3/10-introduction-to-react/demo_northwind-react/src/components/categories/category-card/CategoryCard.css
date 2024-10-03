@@ -1,0 +1,30 @@
+.category-card {
+    cursor: pointer;
+}
+.category-card:hover {
+    background-color: antiquewhite;
+}
+
+
+.edit{
+    color: brown;
+}
+
+#category-header {
+    /* color:rgb(61, 61, 61); */
+    font-weight: 700;
+  }
+  
+  #category-body {
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden;
+      height: 150px;
+  }
+  
+  #category-body img
+  {
+      position: relative;
+      top: -25px;
+      width: 100%;
+  }

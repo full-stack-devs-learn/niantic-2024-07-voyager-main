@@ -20,11 +20,19 @@ public class Television
 
     public int getCurrentChannel()
     {
+        if(!isOn)
+        {
+            return -1;
+        }
         return currentChannel;
     }
 
     public int getCurrentVolume()
     {
+        if(!isOn)
+        {
+            return -1;
+        }
         return currentVolume;
     }
 

@@ -1,0 +1,24 @@
+<div class="add-form-screen" id="add-form-screen">
+    <form class="card add-form" id="add-form">
+        <div class="card-header">
+            <h1>Add New Category</h1>
+        </div>
+        <div class="card-body">
+
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" id="category-name" placeholder="Category Name" required>
+                <div class="invalid-feedback">Enter the category name.</div>
+                <label for="category-name">Category Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" rows="4" id="category-description" placeholder="Description" required ></textarea>
+                <div class="invalid-feedback">Enter the description.</div>
+                <label for="category-description">Description</label>
+            </div>
+        </div>
+        <div class="card-footer add-form-buttons">
+            <button class="btn btn-danger" id="cancel-button" type="reset">Cancel</button>
+            <button class="btn btn-success" id="save-button" type="submit">Save</button>
+        </div>
+    </form>
+</div>

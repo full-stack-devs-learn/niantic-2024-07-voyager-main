@@ -2,11 +2,13 @@ package com.niantic.repositories;
 
 import com.niantic.models.Actor;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -16,15 +18,9 @@ public class MySqlActorsDao implements ActorsDao
 {
     private final JdbcTemplate jdbcTemplate;
 
-    public MySqlActorsDao()
+    @Autowired
+    public MySqlActorsDao(DataSource dataSource)
     {
-        // 1. create a data source
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/sakila");
-        dataSource.setUsername("root");
-        dataSource.setPassword("P@ssw0rd");
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 

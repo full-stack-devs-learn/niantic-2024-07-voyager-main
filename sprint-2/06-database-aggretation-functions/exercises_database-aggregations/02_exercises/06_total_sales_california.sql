@@ -4,6 +4,8 @@
 
 -- (1 row) - $3490.02
 
-
+SELECT SUM(sales_price * quantity)
+FROM customer_orders
+WHERE region = 'CA';
 
 

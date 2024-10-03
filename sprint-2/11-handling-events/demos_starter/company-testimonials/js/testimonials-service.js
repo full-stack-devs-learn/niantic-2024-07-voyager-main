@@ -3,12 +3,12 @@ class TestimonialsService {
     loadTestimonials() {
         return [
             {
-              reviewer: 'Elbert Dean',
-              review: "Working with Innova was a game-changer for our brand. They completely transformed our visual identity, making it modern and eye-catching. The team was professional, responsive, and truly understood our vision. We've seen a significant uptick in customer engagement since the redesign. Highly recommend!"
+              name: 'Elbert Dean',
+              testimonial: "Working with Innova was a game-changer for our brand. They completely transformed our visual identity, making it modern and eye-catching. The team was professional, responsive, and truly understood our vision. We've seen a significant uptick in customer engagement since the redesign. Highly recommend!"
             },
             {
-              reviewer: 'Natasha Walters',
-              review: "The creative team at Innova exceeded our expectations from start to finish. They took our abstract ideas and turned them into a stunning website that perfectly reflects our brand's personality. Their attention to detail and commitment to quality is unmatched. We couldn't be happier with the results!"
+              name: 'Natasha Walters',
+              testimonial: "The creative team at Innova exceeded our expectations from start to finish. They took our abstract ideas and turned them into a stunning website that perfectly reflects our brand's personality. Their attention to detail and commitment to quality is unmatched. We couldn't be happier with the results!"
             },
             // {
             //   reviewer: 'Lily Thompson',

@@ -4,8 +4,10 @@ import com.niantic.models.Category;
 import com.niantic.models.Product;
 import com.niantic.services.CategoryDao;
 import com.niantic.services.ProductDao;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,16 +20,23 @@ public class ProductsController
 
     // list all categories
     @GetMapping( "/products")
-    public String products(Model model, @RequestParam(defaultValue = "1") int catId)
+    public String products(Model model,@RequestParam(defaultValue = "1", name ="catId") Integer categoryId)
     {
-        var products = productDao.getProductsByCategory(catId);
-        var category = categoryDao.getCategoryById(catId);
         var categories = categoryDao.getCategories();
+        var category = categoryDao.getCategoryById(categoryId);
 
         model.addAttribute("categories", categories);
         model.addAttribute("currentCategory", category);
-        model.addAttribute("products", products);
         return "products/index";
+    }
+
+    @GetMapping( "/products/category/{categoryId}")
+    public String productsByCategory(Model model, @PathVariable int categoryId)
+    {
+        var products = productDao.getProductsByCategory(categoryId);
+
+        model.addAttribute("products", products);
+        return "fragments/products-list";
     }
 
     // details page
@@ -59,8 +68,16 @@ public class ProductsController
     }
 
     @PostMapping("/products/new")
-    public String saveProduct(@ModelAttribute("product") Product product)
+    public String saveProduct(@Valid @ModelAttribute("product") Product product, Model model, BindingResult bindingResult)
     {
+        if(bindingResult.hasErrors())
+        {
+            var categories = categoryDao.getCategories();
+            model.addAttribute("categories", categories);
+            model.addAttribute("product", product);
+
+            return "products/add";
+        }
 
         productDao.addProduct(product);
         return "redirect:/products?catId=" + product.getCategoryId();

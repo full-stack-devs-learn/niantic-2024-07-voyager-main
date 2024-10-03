@@ -4,6 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        System.out.println("Hello world!");
+        Drivable mower = new RidingMower("Cub Cadet", "64", 500);
+        mower.turnOn();
     }
 }

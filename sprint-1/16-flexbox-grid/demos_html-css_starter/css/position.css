@@ -6,15 +6,38 @@
 
 body {
     font-family: Montserrat, 'sans-serif';
-    margin: 10px;
+    margin: 0px;
     height: 200vw
 }
+.nav {
+    position: fixed;
+    margin: 0;
+    width: 100%;
+    z-index: 1000;
+}
 
-.div-1, .div-2, .div-3, .div-4 {
+.div {
     background-color: white;
     border: solid 3px black;
     border-radius: 5px;
     height: 100px;
+}
+.div > img {
+    height: 100%;
+}
+
+.div > ul {
+    display: inline-block;
+    margin:  0;
+    padding: 0;
+}
+
+.div > ul > li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.div-1, .div-2, .div-3, .div-4 {
     /* width: 100px; */
     text-align: center;
     vertical-align:middle;
@@ -26,9 +49,13 @@ body {
 .div-1 {
     border-color: red;
     background-color: #ff000022;
+    z-index: 0;
 }
 
 .div-2 {
+    position: static;
+    top: 20px;
+    left: 20px;
     border-color: blue;
     background-color: #0000ff22;
 }
@@ -44,6 +71,9 @@ body {
 }
 
 #parent-div {
+    position: relative;
+    top: 120px;
+    /* left: 100px; */
     border: solid 3px black;
     border-radius: 5px;
 }

@@ -4,6 +4,7 @@ colors.addEventListener("click", event =>
 	if (event.target.nodeName.toLowerCase() === "li")
 	{
 		event.target.style.backgroundColor = event.target.innerText;
+		event.target.style.color = "white";
 	}
 });
 
@@ -27,7 +28,11 @@ document.addEventListener('DOMContentLoaded', () =>
 	{
 		link.addEventListener('click', (event) =>
 		{
-			// stop default event (navigate away)
+			const shouldNavigate = confirm("You are about to leave the page. Do you want to continue?")
+			if(!shouldNavigate)
+			{
+				event.preventDefault();
+			}
 		})
 	})
 });

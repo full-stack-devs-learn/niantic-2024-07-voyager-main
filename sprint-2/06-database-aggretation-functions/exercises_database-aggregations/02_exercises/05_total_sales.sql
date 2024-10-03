@@ -4,7 +4,7 @@
 
 -- (1 row) -- 1354489.59
 
-
-
+SELECT SUM(sales_price * quantity)
+FROM customer_orders;
 
 

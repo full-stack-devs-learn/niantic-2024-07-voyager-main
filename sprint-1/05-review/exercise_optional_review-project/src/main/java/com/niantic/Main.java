@@ -27,7 +27,7 @@ public class Main
                 case 4:
                     findLowestScore();
                     break;
-                case 5:
+                case 0:
                     System.out.println("Thanks for playing!");
                     System.out.println("Good bye!");
                     System.exit(0);
@@ -57,11 +57,17 @@ public class Main
 
     private static void createNewTestScores()
     {
+        scores = new int[3];
         System.out.println("Enter code to create a new array and ask for test scores");
     }
 
     private static void calculateAverage()
     {
+
+        for(double score: scores)
+        {
+            System.out.println(score);
+        }
         System.out.println("Add logic to calculate the average of all test scores, and display it");
     }
 

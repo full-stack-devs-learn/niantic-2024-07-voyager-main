@@ -5,4 +5,8 @@
 -- (1 row)
 
 
+SELECT AVG(sales_price * quantity) AS average_line_item
+FROM customer_orders
+WHERE country = 'USA';
+
 

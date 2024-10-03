@@ -203,6 +203,18 @@ public class Main
 
         // What percentage of his shots did he make?
 
+        int peteMadeShots = 11;
+        int peteMissedShots = 4;
+        int peteTotalShots = peteMissedShots + peteMadeShots;
+
+        double percentMade = (peteMadeShots * 1.0) / peteTotalShots; // 0.7333
+        //percentMade  = percentMade*100;
+        percentMade *= 100; //73.3333333333
+        percentMade = Math.round(percentMade); //73.0000000000
+        percentMade /= 100; //0.73
+
+        System.out.println("Petes shot percentage: " + percentMade);
+
 
 
 

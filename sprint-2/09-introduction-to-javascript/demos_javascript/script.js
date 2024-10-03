@@ -12,7 +12,15 @@ function variables() {
   // Declares a variable where the value cannot be changed
   // Declares a variable those value can be changed
   // Declares a variable that will always be an array
+
+  var firstName = "Peter";
+  let middleName = "Garrison";
+  const lastName = "Gibbons";
+
+  console.log(`${firstName} ${middleName} ${lastName}`);
 }
+
+
 
 /**
  * Functions can also accept parameters.
@@ -61,19 +69,27 @@ function falsy(x) {
     - or they can be functions
 */
 function objects() {
+
   const manager = {
-    firstName: "Bill",
-    lastName: "Lumbergh",
-    age: 42,
-    employees: [
-      "Peter Gibbons",
-      "Milton Waddams",
-      "Samir Nagheenanajar",
-      "Michael Bolton"
-    ]
-  };
+                    firstName: "Bill",
+                    lastName: "Lumbergh",
+                    age: 42,
+                    employees: [
+                                "Peter Gibbons",
+                                "Milton Waddams",
+                                "Samir Nagheenanajar",
+                                "Michael Bolton"
+                              ],
+                  };
+
+  const employee = {};
+  employee.firstName = "Peter";
+  employee.lastName = "Gibbons";
+  employee.manager = manager;
 
   // Log the object
+  console.log(manager);
+  console.log(employee);
 
   // Log the first and last name
 
@@ -90,11 +106,12 @@ function with the same name, more than one time in a script file, the
 earlier ones are overriden and the most recent one will be used.
 */
 
-function Add(num1, num2) {
+function add(num1, num2) {
   return num1 + num2;
 }
 
-function Add(num1, num2, num3) {
+function add(num1 = 0, num2 = 0, num3 = 0) {
+  console.log(arguments)
   return num1 + num2 + num3;
 }
 

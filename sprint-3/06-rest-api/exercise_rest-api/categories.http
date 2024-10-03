@@ -1,0 +1,18 @@
+### GET all categories
+GET http://localhost:8080/api/categories
+
+### GET category 8
+GET http://localhost:8080/api/categories/8
+
+### POST to add a new category
+POST http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+  "categoryName": "Some demo",
+  "description": "some description"
+}
+
+
+
+

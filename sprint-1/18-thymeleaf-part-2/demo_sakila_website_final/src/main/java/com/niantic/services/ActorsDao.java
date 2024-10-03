@@ -14,7 +14,6 @@ public class ActorsDao
 {
     private JdbcTemplate jdbcTemplate;
 
-    @Autowired
     public ActorsDao()
     {
         // 1. create a data source

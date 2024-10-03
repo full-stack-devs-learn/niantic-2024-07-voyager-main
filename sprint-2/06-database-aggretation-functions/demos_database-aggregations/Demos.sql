@@ -1,30 +1,71 @@
+USE northwind;
+
 -- ORDERING RESULTS
 
+
 -- Company Name, Country and City sorted by country, then city
+SELECT *
+FROM customers;
+
+SELECT company_name
+	, country
+    , city
+FROM customers
+ORDER BY country
+	, city;
 
 
 -- All Countries and Cities where we have Customers.
+SELECT DISTINCT country
+    , city
+--    , contact_title
+FROM customers
+ORDER BY country
+	, city;
 
 
 -- Product name and price - most expensive first
-
+SELECT product_name
+	, unit_price
+FROM products
+ORDER BY unit_price DESC;
 
 
 
 -- LIMITING RESULTS
 
 -- most expensive product
+SELECT product_name
+	, unit_price
+FROM products
+ORDER BY unit_price DESC
+LIMIT 1;
 
 
 -- 10 most expensive products
+SELECT product_name
+	, unit_price
+FROM products
+ORDER BY unit_price DESC
+LIMIT 10;
 
 
 
 -- 20 LEAST expensive products
+SELECT product_name
+	, unit_price
+FROM products
+ORDER BY unit_price 
+LIMIT 20;
 
 
-
--- 15 LEAST expensive products
+-- price sorted desc within each category
+SELECT category_id
+	, max(unit_price) as most_expensive
+FROM products
+GROUP BY category_id
+ORDER BY category_id
+;
 
 
 
@@ -32,7 +73,20 @@
 
 -- CONCATENATING OUTPUTS
 
--- All customers names with city, state and country combined.
+-- Title FirstName LastName from employees table in one column.
+USE Northwind;
+
+SELECT CONCAT(title_of_courtesy, ' ', first_name, ' ', last_name) AS full_name
+FROM employees;
+
+USE world;
+
+-- arithmetic with NULL values
+SELECT Name
+	, GNP
+    , COALESCE(GNPOld, 0) AS GNP_OLD
+    , GNP - COALESCE(GNPOld, 0) AS ChangeInGNP
+FROM country;
 
 
 

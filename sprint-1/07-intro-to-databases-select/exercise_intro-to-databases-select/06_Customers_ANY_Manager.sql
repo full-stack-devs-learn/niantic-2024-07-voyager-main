@@ -4,5 +4,9 @@ USE northwind;
 -- all customers where the contact has the word manager
 -- in their title
 
--- Expected: 17 rows
+-- Expected: 33 rows
+
+    SELECT *
+    FROM customers
+    WHERE contact_title LIKE '%Manager';
 

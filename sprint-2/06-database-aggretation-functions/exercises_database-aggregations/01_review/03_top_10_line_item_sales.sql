@@ -13,5 +13,14 @@
 -- Order the results by line_total, highest first.
 -- (10 rows)
 
+SELECT product_name,
+	sales_price,
+	quantity,
+    (sales_price * quantity) AS sub_total,
+	((sales_price * quantity) * discount) AS total_discount,
+    (sales_price * quantity) -  ((sales_price * quantity) * discount) AS line_total
+FROM customer_orders
+ORDER BY (sales_price * quantity) -  ((sales_price * quantity) * discount) DESC
+LIMIT 10;
 
 

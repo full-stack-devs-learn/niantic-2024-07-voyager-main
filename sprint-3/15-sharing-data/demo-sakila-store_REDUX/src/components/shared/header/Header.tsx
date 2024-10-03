@@ -1,6 +1,23 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, NavLink } from "react-router-dom"
+import { AppDispatch } from "../../../store/store";
+import { loadActors } from "../../../store/features/actors-slice";
 
 export default function Header() {
+
+    const dispatch = useDispatch<AppDispatch>()
+
+
+    const [searchName, setSearchName] = useState<string>()
+
+    async function searchHandler(event: any)
+    {
+        event.preventDefault();
+
+        dispatch(loadActors(searchName!))
+
+    }
     return (
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
@@ -20,6 +37,10 @@ export default function Header() {
                             <NavLink className="nav-link" to="/movies">Movies</NavLink>
                         </li>
                     </ul>
+                    <form className="d-flex" onSubmit={searchHandler}>
+                        <input className="form-control me-sm-2" type="search" onChange={(e) => {setSearchName(e.target.value)}} placeholder="Search" />
+                        <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </nav>
